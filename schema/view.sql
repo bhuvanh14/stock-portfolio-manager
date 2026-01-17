@@ -1,0 +1,35 @@
+-- 1. USERS
+SELECT * FROM Users;
+
+-- 2. STOCKS
+SELECT * FROM Stocks;
+
+-- 3. PORTFOLIOS
+SELECT * FROM Portfolios;
+
+-- 4. PORTFOLIO_STOCKS
+SELECT * FROM Portfolio_Stocks;
+
+-- 5. TRANSACTIONS
+SELECT * FROM Transactions;
+
+-- 6. STOCK_PRICES
+SELECT * FROM Stock_Prices;
+
+-- 7. DIVIDENDS
+SELECT * FROM Dividends;
+
+-- 8. ALERTS
+SELECT * FROM Alerts;
+
+-- 9. WATCHLIST
+SELECT * FROM Watchlist;
+
+-- 10. SECTORS
+SELECT * FROM Sectors;
+
+-- 11. STOCK_SECTORS
+SELECT * FROM Stock_Sectors;
+
+-- 12. SETTINGS
+SELECT * FROM Settings;

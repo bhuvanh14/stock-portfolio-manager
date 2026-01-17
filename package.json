@@ -1,0 +1,12 @@
+{
+  "name": "stock-portfolio-manager-sql",
+  "version": "1.0.0",
+  "description": "This database is designed to manage users, their stock portfolios, transactions, watchlists, and related stock market information. It supports tracking real-time stock prices, dividend payouts, sector classification, user alerts, and personalized notification settings. The schema ensures data integrity through primary keys, foreign keys, unique constraints, and appropriate data types.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

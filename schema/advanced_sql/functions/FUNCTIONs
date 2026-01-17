@@ -1,0 +1,44 @@
+-- Drop existing functions (safe)
+DROP FUNCTION IF EXISTS get_avg_price;
+DROP FUNCTION IF EXISTS has_stock;
+DROP FUNCTION IF EXISTS total_shares;
+
+-- 1) get_avg_price: return avg_price or 0
+CREATE FUNCTION get_avg_price(p_portfolio_id INT, p_stock_id INT)
+RETURNS DECIMAL(10,2)
+DETERMINISTIC
+RETURN (
+    SELECT IFNULL(
+        (SELECT avg_price FROM Portfolio_Stocks
+         WHERE portfolio_id = p_portfolio_id AND stock_id = p_stock_id
+         LIMIT 1),
+    0)
+);
+
+-- 2) has_stock: return 1 if portfolio holds the stock, else 0
+CREATE FUNCTION has_stock(p_portfolio_id INT, p_stock_id INT)
+RETURNS TINYINT(1)
+DETERMINISTIC
+RETURN (
+    SELECT IF(
+        (SELECT COUNT(*) FROM Portfolio_Stocks
+         WHERE portfolio_id = p_portfolio_id AND stock_id = p_stock_id) > 0,
+    1, 0)
+);
+
+-- 3) total_shares: sum of quantities (or 0)
+CREATE FUNCTION total_shares(p_portfolio_id INT)
+RETURNS INT
+DETERMINISTIC
+RETURN (
+    SELECT IFNULL(SUM(quantity), 0)
+    FROM Portfolio_Stocks
+    WHERE portfolio_id = p_portfolio_id
+);
+
+-- ---------- Tests (run after the functions successfully create) ----------
+SELECT get_avg_price(1,1)   AS avg_price_aapl_alice;
+SELECT has_stock(1,2)       AS alice_has_googl;
+SELECT has_stock(2,2)       AS bob_has_googl;
+SELECT total_shares(1)      AS total_shares_alice;
+SELECT total_shares(2)      AS total_shares_bob;
