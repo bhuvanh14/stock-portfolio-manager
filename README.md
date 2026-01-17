@@ -212,6 +212,3 @@ Constraints:
 
 This schema enforces data integrity, avoids duplication, and supports advanced stock portfolio operations.
 
----
-
-If you want, I can now create a **clean ER diagram** to visually represent this schema for easier understanding. Do you want me to do that?
